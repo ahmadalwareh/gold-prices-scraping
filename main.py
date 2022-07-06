@@ -29,9 +29,5 @@ for single_date in daterange(start_date, end_date):
             list_of_prices.append(str(currencies_list[item_index+2]))
             print(currencies_list[item_index+2])
         item_index += 1
-        # sleep(1)
-
-
-# if __name__ == '__main__':
-#     print_hi('PyCharm')
+        sleep(1)
 
