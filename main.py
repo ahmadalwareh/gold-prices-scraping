@@ -1,17 +1,18 @@
 import datetime
 from datetime import timedelta, date
+from xml.dom.minidom import Element
 import requests as req
 from time import sleep
 from bs4 import BeautifulSoup
 import re
 
 
-def daterange(start_date, end_date):
+def daterange(start_date: date, end_date: date):
     for n in range(int((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
 
-def get_price_of_currency(price_var):
+def get_price_of_currency(price_var: Element) -> float:
     str_price = str(price_var)
     start_id = str_price.index('>')+1
     end_id = str_price.find('/')-1
@@ -38,3 +39,6 @@ for single_date in daterange(start_date, end_date):
             #Will print Date, Price for 1 Ounce, Curreency = USD
             print(single_date, final_price, "USD",end="\n")
             sleep(1)
+
+def write_to_file(prices_list: list):
+    p_file = 
