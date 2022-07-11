@@ -40,5 +40,9 @@ for single_date in daterange(start_date, end_date):
             print(single_date, final_price, "USD",end="\n")
             sleep(1)
 
+
 def write_to_file(prices_list: list):
-    p_file = 
+    p_file = open("prices.txt", "a")
+    for item in prices_list:
+        p_file.write(item)
+    p_file.close()
