@@ -19,6 +19,14 @@ def get_price_of_currency(price_var: Element) -> float:
     return str_price[start_id:end_id]
 
 
+def write_to_file(date_ :date, price: str, currency: str = "USD"):
+    p_file = open("prices.txt", "a")
+    p_file.write(str(date_)+" ")
+    p_file.write(price+" ")
+    p_file.write(currency + "\n")
+    p_file.close()
+
+
 start_date = date(2000, 1, 1)
 end_date = datetime.date.today()
 list_of_prices = list()
@@ -40,9 +48,4 @@ for single_date in daterange(start_date, end_date):
             print(single_date, final_price, "USD",end="\n")
             sleep(1)
 
-
-def write_to_file(prices_list: list):
-    p_file = open("prices.txt", "a")
-    for item in prices_list:
-        p_file.write(item)
-    p_file.close()
+    write_to_file(single_date, final_price)
