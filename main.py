@@ -16,7 +16,6 @@ end_date = datetime.date.today()
 list_of_prices, currencies_dict = list(), dict()
 
 for single_date in daterange(start_date, end_date):
-    item_index = 0
     URL = f'https://www.xe.com/currencytables/?from=USD&date={single_date.strftime("%Y-%m-%d")}'
     page = req.get(URL)
     soup = BeautifulSoup(page.content, "html.parser")
@@ -26,8 +25,6 @@ for single_date in daterange(start_date, end_date):
 
     for item in currencies_list:
         if re.match("^(.*?([Gg]old))", str(item)):
-            list_of_prices.append(str(currencies_list[item_index+2]))
-            print(currencies_list[item_index+2])
-        item_index += 1
-        sleep(1)
-
+            list_of_prices.append(currencies_list[currencies_list.index(item)+2])
+            print(single_date, currencies_list[currencies_list.index(item)+2], end="\n")
+        #sleep(1)
