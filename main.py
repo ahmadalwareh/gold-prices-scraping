@@ -11,6 +11,13 @@ def daterange(start_date, end_date):
         yield start_date + timedelta(n)
 
 
+def get_price_of_currency(price_var):
+    str(price_var)
+    start_id = price_var.index('<td>')
+    end_id = price_var.find('</td>')
+    return price_var[start_id:end_id]
+
+
 start_date = date(2000, 1, 1)
 end_date = datetime.date.today()
 list_of_prices = list()
@@ -25,6 +32,8 @@ for single_date in daterange(start_date, end_date):
 
     for item in currencies_list:
         if re.match("^(.*?([Gg]old))", str(item)):
-            list_of_prices.append(currencies_list[currencies_list.index(item)+2])
-            print(single_date, currencies_list[currencies_list.index(item)+2], end="\n")
+            price = currencies_list[currencies_list.index(item)+2]
+            final_price = get_price_of_currency(price)
+            list_of_prices.append(final_price)
+            print(single_date, price, end="\n")
             sleep(1)
