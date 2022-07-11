@@ -27,4 +27,4 @@ for single_date in daterange(start_date, end_date):
         if re.match("^(.*?([Gg]old))", str(item)):
             list_of_prices.append(currencies_list[currencies_list.index(item)+2])
             print(single_date, currencies_list[currencies_list.index(item)+2], end="\n")
-        #sleep(1)
+            sleep(1)
