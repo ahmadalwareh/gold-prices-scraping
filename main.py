@@ -13,7 +13,7 @@ def daterange(start_date, end_date):
 
 start_date = date(2000, 1, 1)
 end_date = datetime.date.today()
-list_of_prices, currencies_dict = list(), dict()
+list_of_prices = list()
 
 for single_date in daterange(start_date, end_date):
     URL = f'https://www.xe.com/currencytables/?from=USD&date={single_date.strftime("%Y-%m-%d")}'
