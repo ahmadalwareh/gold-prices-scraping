@@ -12,10 +12,10 @@ def daterange(start_date, end_date):
 
 
 def get_price_of_currency(price_var):
-    str(price_var)
-    start_id = price_var.index('<td>')
-    end_id = price_var.find('</td>')
-    return price_var[start_id:end_id]
+    str_price = str(price_var)
+    start_id = str_price.index('>')+1
+    end_id = str_price.find('/')-1
+    return str_price[start_id:end_id]
 
 
 start_date = date(2000, 1, 1)
@@ -35,5 +35,6 @@ for single_date in daterange(start_date, end_date):
             price = currencies_list[currencies_list.index(item)+2]
             final_price = get_price_of_currency(price)
             list_of_prices.append(final_price)
-            print(single_date, price, end="\n")
+            #Will print Date, Price for 1 Ounce, Curreency = USD
+            print(single_date, final_price, "USD",end="\n")
             sleep(1)
