@@ -27,7 +27,7 @@ def write_to_file(date_ :date, price: str, currency: str = "USD"):
     p_file.close()
 
 
-start_date = date(2000, 1, 1)
+start_date = date(2003, 5, 10)
 end_date = datetime.date.today()
 list_of_prices = list()
 
@@ -45,7 +45,7 @@ for single_date in daterange(start_date, end_date):
             final_price = get_price_of_currency(price)
             list_of_prices.append(final_price)
             #Will print Date, Price for 1 Ounce, Curreency = USD
-            print(single_date, final_price, "USD",end="\n")
-            sleep(1)
+            #print(single_date, final_price, "USD",end="\n")
+            #sleep(1)
 
     write_to_file(single_date, final_price)
